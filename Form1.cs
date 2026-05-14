@@ -109,23 +109,5 @@ namespace media_overlay
 
         [DllImport("user32.dll")]
         static extern int SetWindowLong(IntPtr hWnd, int nIndex, long dwNewLong);
-
-        private void label1_Paint(object sender, PaintEventArgs e)
-        {
-            e.Graphics.FillRectangle(new SolidBrush(BackColor), ClientRectangle);
-            using (GraphicsPath gp = new GraphicsPath())
-            using (Pen outline = new Pen(Color.Red, 3)
-            { LineJoin = LineJoin.Round })
-            using (StringFormat sf = new StringFormat())
-            using (Brush foreBrush = new SolidBrush(ForeColor))
-            {
-                gp.AddString(Text, Font.FontFamily, (int)Font.Style,
-                    Font.Size, ClientRectangle, sf);
-                e.Graphics.ScaleTransform(1.3f, 1.35f);
-                e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-                e.Graphics.DrawPath(outline, gp);
-                e.Graphics.FillPath(foreBrush, gp);
-            }
-        }
     }
 }

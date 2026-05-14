@@ -43,7 +43,6 @@
             label1.TabIndex = 0;
             label1.Text = "label1asfasfaasfasfasfsf";
             label1.TextAlign = ContentAlignment.TopRight;
-            label1.Paint += label1_Paint;
             // 
             // Form1
             // 
