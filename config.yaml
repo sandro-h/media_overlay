@@ -1,0 +1,42 @@
+# Media Overlay Configuration
+# This file configures the media overlay display, format, and filtering
+
+# Display settings for the overlay window
+display:
+  # Monitor index: -1 = last monitor (default), 0 = primary, 1 = secondary, etc.
+  monitorIndex: -1
+
+  # Screen corner: TopLeft, TopRight, BottomLeft, BottomRight
+  corner: TopRight
+
+  # Window dimensions
+  width: 600
+  height: 43
+
+  # Text color (RGB hex)
+  textColor: "FFFFFF"
+
+  # Outline color (RGB hex)
+  outlineColor: "000000"
+
+  # Outline width in pixels
+  outlineWidth: 2
+
+  # Font settings
+  fontSize: 24.0
+  fontFamily: "Segoe UI"
+
+# Format string for displaying media information
+# Available placeholders: {Artist}, {Title}, {Album}, {Program}
+format: "{Artist} - {Title}"
+
+# Media filtering configuration
+mediaFilter:
+  # Exclude specific programs
+  # Example: ["Spotify", "YouTube"]
+  # Hint: use {Program} in the format string to identify which program is being displayed
+  excludePrograms: []
+
+  # Include only specific programs (empty = all programs)
+  # If specified, only media from these programs will be shown
+  includePrograms: []

@@ -29,9 +29,18 @@ namespace media_overlay
             using GraphicsPath gp = new GraphicsPath();
             using Pen outline = new Pen(OutlineForeColor, OutlineWidth) { LineJoin = LineJoin.Round };
             using StringFormat sf = new StringFormat(StringFormatFlags.NoWrap);
-            using Brush foreBrush = new SolidBrush(ForeColor);            
-            sf.Alignment = StringAlignment.Far;
-            sf.LineAlignment = StringAlignment.Near;
+            using Brush foreBrush = new SolidBrush(ForeColor);
+
+            // Convert TextAlign to StringFormat alignment
+            (sf.Alignment, sf.LineAlignment) = TextAlign switch
+            {
+                ContentAlignment.TopLeft => (StringAlignment.Near, StringAlignment.Near),
+                ContentAlignment.TopRight => (StringAlignment.Far, StringAlignment.Near),
+                ContentAlignment.BottomLeft => (StringAlignment.Near, StringAlignment.Far),
+                ContentAlignment.BottomRight => (StringAlignment.Far, StringAlignment.Far),
+                _ => (StringAlignment.Near, StringAlignment.Near)
+            };
+
             gp.AddString(Text, Font.FontFamily, (int)Font.Style,
                 Font.Size, ClientRectangle, sf);
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
